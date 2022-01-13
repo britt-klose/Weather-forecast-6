@@ -1,0 +1,38 @@
+.jumbotron {
+    text-align: center;
+    background-color: rgb(60, 60, 201);
+    color: #fff;
+    border-radius: 0;
+    border-bottom: 10px solid black;
+  }
+
+#submitBtn{
+    border-left: 1px solid black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #382bf3;
+    color: white;
+  }
+  
+#submitBtn:hover{
+    background-color: #547ff5;
+  }
+  
+#submitBtn:active{
+    background-color: #547ff5; 
+  }
+
+.card{
+    height: 25vh;
+    width: 20vh;
+    background-color: rgb(51, 52, 80);
+    text-align: left;
+}
+.row{
+  float: right;
+}
+.card-body{
+    color:white;
+    font-size: small;
+    margin-top:-12px;
+}
