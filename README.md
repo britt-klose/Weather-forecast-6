@@ -1,21 +1,8 @@
 # Weather-forecast-6
+    This weather dashboard is the perfect platform for looking at the weather status of any city.
 
 # Description
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-    THEN I am presented with current and future conditions for that city and that city is added to the search history
-
-WHEN I view current weather conditions for that city
-    THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-
-WHEN I view the UV index
-    THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-
-WHEN I view future weather conditions for that city
-    THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-    
-WHEN I click on a city in the search history
-    THEN I am again presented with current and future conditions for that city
+ Users simply type a city in the search bar and hit enter. The browser will load the current temperature, wind speed, humidity, and UV index of that city along with the current date. Below the current weather are cards for a 5 day forecast. Where the user can view the temperature, wind, and humidity for the next 5 days. Additionally, the browser will save the user's search history below the search bar. So that when they type in a new city they can see all their previous searches below. More so, users can click on previous city searches and be brough back to the weather display for that city again. 
 
 # Application
 The following displays images of the deployed project and a link to view it in the browser. 
@@ -28,5 +15,6 @@ https://britt-klose.github.io/Weather-forecast-6/
     - CSS
     - Bootstrap
     - Java Script
+    - J Query
     - HTML
     - APIs

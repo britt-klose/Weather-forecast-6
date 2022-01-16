@@ -5,13 +5,17 @@
     border-radius: 0;
     border-bottom: 10px solid black;
   }
-
+#searchTitle{
+  text-align:left
+}
 #submitBtn{
     border-left: 1px solid black;
     border-top-right-radius: 15px;
+    width: 300px;
     border-bottom-right-radius: 15px;
     background-color: #382bf3;
     color: white;
+    margin-left: -60px;
   }
   
 #submitBtn:hover{
@@ -21,18 +25,40 @@
 #submitBtn:active{
     background-color: #547ff5; 
   }
-
+#city-inputs{
+  margin-left: -60px;
+  width: 300px;
+}
 .card{
     height: 25vh;
     width: 20vh;
     background-color: rgb(51, 52, 80);
     text-align: left;
 }
-.row{
-  float: right;
+#forecast{
+  margin-top: 20px;
+  margin-left: 26%;
 }
 .card-body{
     color:white;
     font-size: small;
-    margin-top:-12px;
+    margin-top:-15px;
+}
+#pickedcard{
+  float: right;
+  background-color: #fff;
+  margin-left: 30%;
+  margin-top: -95px;
+}
+#pickedbody{
+  color: black;
+}
+
+#fiveday{
+  font-weight: bold;
+  margin-top: 17px;
+  text-align:center;
+}
+@media screen {
+  
 }
