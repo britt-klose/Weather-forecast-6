@@ -28,11 +28,14 @@
           <button type="button" class="searchBtn btn-primary" id="submitBtn">Search</button>
         </form>
       </div>
+      <div class="container" id="history">
+      </div>
      <!--Picked city card-->
   <div class="row justify-content-md-center">
     <div class="card" id="pickedcard" style="width: 55rem; height:250px ;">
       <div class="card-body" id="pickedbody">
-        <h5 class="card-title" id="cityName"></h5>
+        <h5 class="card-title" id="cityTitle"></h5>
+        <h6 id="date" style="font-weight:bold"></h6>
         <p class="card-text" id="temp">Temp:</p>
         <p id="wind">Wind:</p>
         <p id="humidity">Humidity:</p>
@@ -40,55 +43,62 @@
       </div>
     </div>
  </div>
+ <!--Icons--
+ <i class="fa-regular fa-cloud"></i>
+ <i class="fa-regular fa-sun"></i>
+ <i class="fa-regular fa-cloud-sun"></i>
+ <i class="fa-regular fa-cloud-sun-rain"></i>-->
+
+
   <!--Cards for 5 day Forecast-->
   <h5 id="fiveday">
     5 Day Forecast
   </h5>
 <div class="row" id="forecast">
-  <div class="col-sm-1.5">
+  <div class="col-sm-2">
     <div class="card">
       <div class="card-body" >
-        <h6 class="card-title">Date</h6>
+        <h6 class="card-title" id="dayOne"></h6>
         <p id="tForecast">Temp:</p>
         <p id="wForecast">Wind:</p>
         <p id="hForecast">Humidity</p>
       </div>
     </div>
   </div>
-  <div class="col-sm-1.5">
+  <div class="col-sm-2">
     <div class="card">
       <div class="card-body">
-        <h6 class="card-title">Date</h6>
+        <h6 class="card-title" id="dayTwo"></h6>
         <p id="tForecast">Temp:</p>
         <p id="wForecast">Wind:</p>
         <p id="hForecast">Humidity</p>
       </div>
     </div>
   </div>
-  <div class="col-sm-1.5">
+  <div class="col-sm-2">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Date</h6>
+          <h6 class="card-title" id="dayThree"></h6>
         <p id="tForecast">Temp:</p>
         <p id="wForecast">Wind:</p>
         <p id="hForecast">Humidity</p>
         </div>
       </div>
   </div>
-  <div class="col-sm-1.5">
+  <div class="col-sm-2">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Date</h6>
+          <h6 class="card-title" id="dayFour"></h6>
         <p id="tForecast">Temp:</p>
         <p id="wForecast">Wind:</p>
         <p id="hForecast">Humidity</p>
         </div>
       </div>
   </div>
-  <div class="col-sm-1.5">
+  <div class="col-sm-2">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Date</h6>
+          <h6 class="card-title" id="dayFive"></h6>
           <p id="tForecast">Temp:</p>
           <p id="wForecast">Wind:</p>
           <p id="hForecast">Humidity</p>
