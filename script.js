@@ -2,7 +2,7 @@ var apiKey ="cf0342220eede691b1664eda9166fe11"
 var cityName=document.getElementById("cityName")
 //var firstApiName ="https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&appid=cf0342220eede691b1664eda9166fe11"
 //var firstApiName = "https://api.openweathermap.org/data/2.5/weather?q" + cityName + "&appid=" + apiKey
-var firstApiName = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey
+var firstApiName = "https://api.openweathermap.org/data/2.5/weather?q=" + "Philadelphia" + "&appid=" + apiKey
 var btn = document.getElementById ("submitBtn")
 var cityInputs=document.getElementById("city-inputs") 
 var searchHistory=[cityInputs.value]
@@ -10,7 +10,7 @@ var temp=document.getElementById("temp")
 var wind= document.getElementById("wind")
 var humidity= document.getElementById("humidity")
 var uvi= document.getElementById("uvi")
-var currentDate = moment().format("dddd, MMMM Do YYYY")
+//var currentDate = moment().format("dddd, MMMM Do YYYY")
 console.log(currentDate)
 //var dayOne
 //var dayTwo
