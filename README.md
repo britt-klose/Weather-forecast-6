@@ -15,6 +15,5 @@ https://britt-klose.github.io/Weather-forecast-6/
     - CSS
     - Bootstrap
     - Java Script
-    - J Query
     - HTML
     - APIs
