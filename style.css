@@ -31,9 +31,10 @@
 }
 .card{
     height: 25vh;
-    width: 20vh;
+    width: 22vh;
     background-color: rgb(51, 52, 80);
     text-align: left;
+    justify-content: space-between;
 }
 #forecast{
   margin-top: 20px;
@@ -46,12 +47,16 @@
 }
 #pickedcard{
   float: right;
+  position:relative;
   background-color: #fff;
-  margin-left: 30%;
+  margin-left: 35%;
   margin-top: -95px;
 }
 #pickedbody{
   color: black;
+}
+#date{
+  text-align:right;
 }
 
 #fiveday{
@@ -59,6 +64,8 @@
   margin-top: 17px;
   text-align:center;
 }
-@media screen {
-  
+#history{
+  color: white;
+  background-color: gray;
+  text-align: left;
 }
