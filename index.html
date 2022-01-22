@@ -14,6 +14,11 @@
 <body class="min-100-vh">
     <header class="jumbotron">
         <h1 class="display-3">Weather Dashboard</h1>
+        <span class="iconify" id="cloudy" data-icon="wi:cloudy"></span>
+        <span class="iconify" id="sunny" data-icon="wi:day-sunny"></span>
+        <span class="iconify" id="rain" data-icon="wi:night-rain"></span>
+        <span class="iconify" id="overcast" data-icon="wi:day-cloudy-high"></span>
+        <span class="iconify" id="snow" data-icon="wi:snow"></span>
     </header>
     
 <div class="container is-fluid">
@@ -35,8 +40,8 @@
     <div class="card" id="pickedcard" style="width: 55rem; height:250px ;">
       <div class="card-body" id="pickedbody">
         <h5 class="card-title" id="cityTitle"></h5>
+        <i id="i0"></i>
         <h6 id="date" style="font-weight:bold"></h6>
-          <i id="i0"></i>
         <p class="card-text" id="temp">Temp:</p>
         <p id="wind">Wind:</p>
         <p id="humidity">Humidity:</p>
@@ -47,12 +52,6 @@
       </div>
     </div>
  </div>
- <!--Icons-->
- <span class="iconify" id="cloudy" data-icon="wi:cloudy"></span>
- <span class="iconify" id="sunny" data-icon="wi:day-sunny"></span>
- <span class="iconify" id="rain" data-icon="wi:night-rain"></span>
- <span class="iconify" id="overcast" data-icon="wi:day-cloudy-high"></span>
-
 
   <!--Cards for 5 day Forecast-->
   <h5 id="fiveday">

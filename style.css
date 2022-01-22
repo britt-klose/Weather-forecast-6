@@ -6,7 +6,8 @@
     border-bottom: 10px solid black;
   }
 #searchTitle{
-  text-align:left
+  text-align:left;
+  margin-left:-40px
 }
 #submitBtn{
     border-left: 1px solid black;
@@ -25,6 +26,17 @@
 #submitBtn:active{
     background-color: #547ff5; 
   }
+#history:hover{
+  background-color: cadetblue;
+}
+#history{
+    color: white;
+    background-color: rgb(192, 194, 192);
+    text-align: left;
+    margin-left: -40px;
+    width: 300px;
+  }
+
 #city-inputs{
   margin-left: -60px;
   width: 300px;
@@ -66,9 +78,4 @@
   font-weight: bold;
   margin-top: 17px;
   text-align:center;
-}
-#history{
-  color: white;
-  background-color: gray;
-  text-align: left;
 }
