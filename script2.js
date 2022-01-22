@@ -11,6 +11,12 @@ var dayTwo=document.getElementById("dayTwo")
 var dayThree=document.getElementById("dayThree")
 var dayFour=document.getElementById("dayFour")
 var dayFive=document.getElementById("dayFive")
+var cloudyIcon=document.getElementById("cloudy")
+var sunnyIcon=document.getElementById("sunny")
+var overcastIcon=document.getElementById("overcast")
+var rainyIcon=document.getElementById("rain")
+
+
 
 function weatherRequest(city_Name){
 fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city_Name + "&appid=" + apiKey
@@ -26,6 +32,16 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city_Name + "&appid
         return response.json()
     }).then(function (data) {
         console.log(data); 
+    if (data.current.weather[0].main==="Clear"){
+           $("#i0").html(sunnyIcon)
+        }
+    if(data.daily[0].weather[0].main==="Rain"){
+        $("#i0").html(rainyIcon)
+    } 
+    if(data.daily[0].weather[0].main==="Clouds"){
+        $("#i0").html(cloudyIcon)
+    }
+
     var temp = document.getElementById("temp")
         temp.textContent="Temp: " + ((data.current.temp-273.15)*1.8+32).toFixed(2);
     var wind = document.getElementById("wind")
@@ -34,6 +50,19 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city_Name + "&appid
         humidity.textContent="Humidity: " + data.current.humidity
     var uvi = document.getElementById("uvi")
         uvi.textContent="UVI: " + data.daily[0].uvi
+        if (uvi<=2.00){ 
+            uvi.setAttribute(
+            "style", "background-color: green"
+            )
+        }else if(uvi>=5.00){
+            uvi.setAttribute(
+            "style", "background-color: red" 
+            )   
+        }else{
+            uvi.setAttribute(
+            "style", "background-color: yellow"
+            )
+        }
     var tForecast=document.querySelectorAll("#tForecast")
     var wForecast=document.querySelectorAll("#wForecast")
     var hForecast=document.querySelectorAll("#hForecast")
@@ -72,7 +101,6 @@ if (searchHistory.indexOf(cityInputs.value)===-1){
      column.addEventListener("click", function(event){
          event.preventDefault()
          weatherRequest(column.textContent)
-         //cityTitle.textContent=data.name
          //need to change city name at top too
      })
      row.appendChild(column)
