@@ -190,7 +190,7 @@ btn.addEventListener("click", function(event){
 
 //Save Search History and display it below each time a new city is added
 if (searchHistory.indexOf(cityInputs.value)===-1){
-    searchHistory.push(cityInputs.value)
+    //searchHistory.push(cityInputs.value)
      console.log(searchHistory)
      var history=document.getElementById("history")
      var row =document.createElement("div")
@@ -211,25 +211,22 @@ if (searchHistory.indexOf(cityInputs.value)===-1){
      row.appendChild(column)
      history.appendChild(row)
    }
-    weatherRequest(cityInputs.value)
-})
+    weatherRequest(cityInputs.value);
+});
 
 //Function to Display Search History
 function renderCities(){
-    for (var i = 0; i< searchHistory.length; i++) {
-        var searchEl=document.createElement("button")
-        searchEl.setAttribute('button', JSON.parse(localStorage.getItem('searchHistory')));  
-        searchEl.innerHTML=localStorage.getItem("history");
-        history.appendChild(searchEl);
+   for (var i = 0; i< searchHistory.length; i++) {
+    //    var searchEl=document.createElement("button")
+      //  searchEl.setAttribute('button', JSON.parse(localStorage.getItem('searchHistory')));  
+        //searchEl.innerHTML=localStorage.getItem("history");
+      //   history.appendChild(searchEl);
+   var searchedCities=JSON.parse(localStorage.getItem("searchHistory"));
+    if (searchedCities !==null){
+        document.getElementById("history").innerHTML=searchedCities;
+   } else{
+        return;
     }
-
-   //var searchedCities=JSON.parse(localStorage.getItem("searchHistory"));
-    //if (searchedCities !==null){
-      //  document.getElementById("history").innerHTML=searchedCities;
-   // } else{
-     //   return;
-    //}
-    
 }
-
+}
 renderCities()
