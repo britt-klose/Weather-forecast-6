@@ -1,10 +1,11 @@
+//Defined variables
 var apiKey = "cf0342220eede691b1664eda9166fe11"
 var cityName = document.getElementById("city-inputs")
 var firstApiCall = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName.placeholder + "&appid=" + apiKey
 var cityTitle =document.getElementById("cityTitle")
 var cityInputs=document.getElementById("city-inputs") 
 var btn = document.getElementById ("submitBtn")
-var searchHistory=[cityInputs.value]
+var searchHistory=[]
 var currentDate=document.getElementById("date")
 var dayOne=document.getElementById("dayOne")
 var dayTwo=document.getElementById("dayTwo")
@@ -16,108 +17,119 @@ var sunnyIcon=document.getElementById("sunny")
 var overcastIcon=document.getElementById("overcast")
 var rainyIcon=document.getElementById("rain")
 var snowIcon=document.getElementById("snow")
-//var icon0=document.getElementById("i0")
-//var icon1=document.getElementById("i1")
-//var icon2=document.getElementById("i2")
-//var icon3=document.getElementById("i3")
-//var icon4=document.getElementById("i4")
-//var icon5=document.getElementById("i5")
+var icon0=document.getElementById("i0")
+var icon1=document.getElementById("i1")
+var icon2=document.getElementById("i2")
+var icon3=document.getElementById("i3")
+var icon4=document.getElementById("i4")
+var icon5=document.getElementById("i5")
 
-
+//Function for fetch request: city coordinates and weather data
 
 function weatherRequest(city_Name){
 fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city_Name + "&appid=" + apiKey
 ).then(function (response) {
     return response.json()
 }).then(function (data) {
-    //console.log(data);
     var lat = data.coord.lat
     var lon = data.coord.lon
-   
+    searchHistory.push(city_Name)
+    localStorage.setItem("searchHistory",JSON.stringify(searchHistory))
+
     var oneCall = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=cf0342220eede691b1664eda9166fe11"
     fetch(oneCall).then(function (response) {
         return response.json()
     }).then(function (data) {
-        console.log(data); 
+        console.log(data);
+
 // If statments for current day icons
     if (data.current.weather[0].main==="Clear"){
-         $("#i0").html(sunnyIcon)
+         icon0.setAttribute("data-icon","wi:day-sunny")
         }
-    if(data.current.weather[0].main==="Rain"){
-         $("#i0").html(rainyIcon)
+    else if(data.current.weather[0].main==="Rain"){
+         icon0.setAttribute("data-icon","wi:night-rain")
         } 
-    if(data.current.weather[0].main==="Clouds"){
-         $("#i0").html(cloudyIcon)
+    else if(data.current.weather[0].main==="Clouds"){
+        icon0.setAttribute("data-icon","wi:cloudy")
         }  
-    if(data.current.weather[0].main==="Snow"){
-         $("#i0").html(snowIcon)
-        }    
+    else if(data.current.weather[0].main==="Snow"){
+        icon0.setAttribute("data-icon","wi:snow")
+        }  
+        console.log(data.daily[1].weather[0].main) 
+
 // If statements for day 1 icons
     if(data.daily[1].weather[0].main==="Clear"){
-         $("#i1").html(sunnyIcon)
+        icon1.setAttribute("data-icon","wi:day-sunny")
         }
-     if(data.daily[1].weather[0].main==="Rain"){
-         $("#i1").html(rainyIcon)
+    else if(data.daily[1].weather[0].main==="Rain"){
+        icon1.setAttribute("data-icon","wi:night-rain")
         }
-     if(data.daily[1].weather[0].main==="Clouds"){
-         $("#i1").html(cloudyIcon)
+     else if(data.daily[1].weather[0].main==="Clouds"){
+        icon1.setAttribute("data-icon","wi:cloudy")
         }
-     if(data.daily[1].weather[0].main==="Snow"){
-         $("#i1").html(snowIcon)
+     else if(data.daily[1].weather[0].main==="Snow"){
+        icon1.setAttribute("data-icon","wi:snow")
         }
+        console.log(data.daily[2].weather[0].main) 
+
 // If statements for day 2 icons
+console.log(icon2)
     if(data.daily[2].weather[0].main==="Clear"){
-         $("#i2").html(sunnyIcon)
+        icon2.setAttribute("data-icon","wi:day-sunny")
         }
-    if(data.daily[2].weather[0].main==="Rain"){
-         $("#i2").html(rainyIcon)
+    else if(data.daily[2].weather[0].main==="Rain"){
+         icon2.setAttribute("data-icon","wi:night-rain")
         }
-    if(data.daily[2].weather[0].main==="Clouds"){
-         $("#i2").html(cloudyIcon)
+    else if(data.daily[2].weather[0].main==="Clouds"){
+        icon2.setAttribute("data-icon","wi:cloudy")
         }
-    if(data.daily[2].weather[0].main==="Snow"){
-         $("#i2").html(snowIcon)
-        }
-//If statments for day 3 Icons
-    if(data.daily[3].weather[0].main==="Clear"){
-         $("#i3").html(sunnyIcon)
-        }
-    if(data.daily[3].weather[0].main==="Rain"){
-         $("#i3").html(rainyIcon)
-        }
-    if(data.daily[3].weather[0].main==="Clouds"){
-         $("#i3").html(cloudyIcon)
-        }
-    if(data.daily[3].weather[0].main==="Snow"){
-         $("#i3").html(snowIcon)
-        }
-//If statments for day 4 Icons
-    if(data.daily[4].weather[0].main==="Clear"){
-         $("#i4").html(sunnyIcon)
-        }
-    if(data.daily[4].weather[0].main==="Rain"){
-         $("#i4").html(rainyIcon)
-         }
-    if(data.daily[4].weather[0].main==="Clouds"){
-         $("#i4").html(cloudyIcon)
-        }
-    if(data.daily[4].weather[0].main==="Snow"){
-         $("#i4").html(snowIcon)
-        }
-//If statments for day 5 Icons
-    if(data.daily[5].weather[0].main==="Clear"){
-         $("#i5").html(sunnyIcon)
-        }
-    if(data.daily[5].weather[0].main==="Rain"){
-         $("#i5").html(rainyIcon)
-        }
-    if(data.daily[5].weather[0].main==="Clouds"){
-         $("#i5").html(cloudyIcon)
-        }
-    if(data.daily[5].weather[0].main==="Snow"){
-         $("#i5").html(snowIcon)
+    else if(data.daily[2].weather[0].main==="Snow"){
+        icon2.setAttribute("data-icon","wi:snow")
         }
 
+//If statments for day 3 Icons
+    if(data.daily[3].weather[0].main==="Clear"){
+        icon3.setAttribute("data-icon","wi:day-sunny")
+        }
+    else if(data.daily[3].weather[0].main==="Rain"){
+         icon3.setAttribute("data-icon","wi:night-rain")
+        }
+    else if(data.daily[3].weather[0].main==="Clouds"){
+        icon3.setAttribute("data-icon","wi:cloudy")
+        }  
+    else if(data.daily[3].weather[0].main==="Snow"){
+        icon3.setAttribute("data-icon","wi:snow")
+        }
+
+//If statments for day 4 Icons
+    if(data.daily[4].weather[0].main==="Clear"){
+        icon4.setAttribute("data-icon","wi:day-sunny")
+        }
+    else if(data.daily[4].weather[0].main==="Rain"){
+         icon4.setAttribute("data-icon","wi:night-rain")
+        }
+    else if(data.daily[4].weather[0].main==="Clouds"){
+        icon4.setAttribute("data-icon","wi:cloudy")
+        }  
+    else if(data.daily[4].weather[0].main==="Snow"){
+        icon4.setAttribute("data-icon","wi:snow")
+        }
+
+//If statments for day 5 Icons
+    if(data.daily[5].weather[0].main==="Clear"){
+        icon5.setAttribute("data-icon","wi:day-sunny")
+        }
+    else if(data.daily[5].weather[0].main==="Rain"){
+         icon5.setAttribute("data-icon","wi:night-rain")
+        }
+    else if(data.daily[5].weather[0].main==="Clouds"){
+        icon5.setAttribute("data-icon","wi:cloudy")
+        }  
+    else if(data.daily[5].weather[0].main==="Snow"){
+        icon5.setAttribute("data-icon","wi:snow")
+        }
+
+// Weather variables for current day
     var temp = document.getElementById("temp")
         temp.textContent="Temp: " + ((data.current.temp-273.15)*1.8+32).toFixed(2);
     var wind = document.getElementById("wind")
@@ -126,19 +138,23 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city_Name + "&appid
         humidity.textContent="Humidity: " + data.current.humidity
     var uvi = document.getElementById("uvi")
         uvi.textContent="UVI: " + data.current.uvi
+
+//If statement to change color of UVI based on severity
         if (data.current.uvi<=2.00){ 
             uvi.setAttribute(
-            "style", "background-color: green"
+            "style", "background-color: green" //Favorable
             )
         }else if(data.current.uvi>=5.00){
             uvi.setAttribute(
-            "style", "background-color: red" 
+            "style", "background-color: red" //Severe
             )   
         }else{
             uvi.setAttribute(
-            "style", "background-color: yellow"
+            "style", "background-color: yellow" //moderate
             )
         }
+
+//Weather vars for forecast days
     var tForecast=document.querySelectorAll("#tForecast")
     var wForecast=document.querySelectorAll("#wForecast")
     var hForecast=document.querySelectorAll("#hForecast")
@@ -150,7 +166,8 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city_Name + "&appid
     }
     
     })
-    cityTitle.textContent=cityInputs.value
+//Displaying picked city name and dates of current and forecasted days
+    cityTitle.textContent=city_Name
     currentDate.textContent=moment().format("L");
     dayOne.textContent=moment().day(1).format("L");
     dayTwo.textContent=moment().day(2).format("L");
@@ -160,29 +177,59 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city_Name + "&appid
 
 });
 }
+
+//Function to bring data from fetch calls when called
 weatherRequest(cityName.placeholder)
 var cityInputs=document.getElementById("city-inputs") 
 var btn = document.getElementById ("submitBtn")
 var searchHistory=[cityInputs.value]
-//Conversion(0K − 273.15) × 9/5 + 32 = -459.7°F
-//loop for forecast which card to which date
 
+//When click on search button bring up the city and all the weather data
 btn.addEventListener("click", function(event){
     event.preventDefault()
+
+//Save Search History and display it below each time a new city is added
 if (searchHistory.indexOf(cityInputs.value)===-1){
     searchHistory.push(cityInputs.value)
      console.log(searchHistory)
      var history=document.getElementById("history")
-     var row=document.createElement("div")
-     var column=document.createElement("div")
+     var row =document.createElement("div")
+     var column =document.createElement("div")
      column.textContent=cityInputs.value
+     //localStorage.setItem("searchHistory", cityInputs.value);
+     //localStorage.setItem("row", row.value)
+     //localStorage.setItem("column", column.value)
+
+//When click on previously searched city, bring the data values back
      column.addEventListener("click", function(event){
          event.preventDefault()
          weatherRequest(column.textContent)
-         //need to change city name at top too
-     })
+         JSON.parse(localStorage.getItem("searchHistory"));
+         localStorage.getItem("row");
+         localStorage.getItem("column");
+         })
      row.appendChild(column)
      history.appendChild(row)
    }
     weatherRequest(cityInputs.value)
 })
+
+//Function to Display Search History
+function renderCities(){
+    for (var i = 0; i< searchHistory.length; i++) {
+        var searchEl=document.createElement("button")
+        searchEl.setAttribute('button', JSON.parse(localStorage.getItem('searchHistory')));  
+        searchEl.innerHTML=localStorage.getItem("history");
+        history.appendChild(searchEl);
+    }
+
+   //var searchedCities=JSON.parse(localStorage.getItem("searchHistory"));
+    //if (searchedCities !==null){
+      //  document.getElementById("history").innerHTML=searchedCities;
+   // } else{
+     //   return;
+    //}
+    
+}
+
+renderCities()
