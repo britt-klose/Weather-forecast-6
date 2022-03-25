@@ -35,6 +35,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city_Name + "&appid
     var lon = data.coord.lon
     searchHistory.push(city_Name)
     localStorage.setItem("searchHistory",JSON.stringify(searchHistory))
+    
 
     var oneCall = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=cf0342220eede691b1664eda9166fe11"
     fetch(oneCall).then(function (response) {
@@ -180,9 +181,12 @@ console.log(icon2)
 
 //Function to bring data from fetch calls when called
 weatherRequest(cityName.placeholder)
-var cityInputs=document.getElementById("city-inputs") 
+var cityInputs=document.getElementById("city-inputs")
 var btn = document.getElementById ("submitBtn")
 var searchHistory=[cityInputs.value]
+
+
+
 
 //When click on search button bring up the city and all the weather data
 btn.addEventListener("click", function(event){
@@ -190,43 +194,39 @@ btn.addEventListener("click", function(event){
 
 //Save Search History and display it below each time a new city is added
 if (searchHistory.indexOf(cityInputs.value)===-1){
-    //searchHistory.push(cityInputs.value)
      console.log(searchHistory)
      var history=document.getElementById("history")
      var row =document.createElement("div")
      var column =document.createElement("div")
-     column.textContent=cityInputs.value
-     //localStorage.setItem("searchHistory", cityInputs.value);
-     //localStorage.setItem("row", row.value)
-     //localStorage.setItem("column", column.value)
-
-//When click on previously searched city, bring the data values back
-     column.addEventListener("click", function(event){
-         event.preventDefault()
-         weatherRequest(column.textContent)
-         JSON.parse(localStorage.getItem("searchHistory"));
-         localStorage.getItem("row");
-         localStorage.getItem("column");
-         })
-     row.appendChild(column)
-     history.appendChild(row)
+     column.textContent= cityInputs.value
+    
+ //When click on previously searched city, bring the data values back
+        column.addEventListener("click", function(event){
+            event.preventDefault()
+            weatherRequest(column.textContent)
+            JSON.parse(localStorage.getItem("searchHistory"));
+            localStorage.getItem("row");
+            localStorage.getItem("column");
+        })     
+        row.appendChild(column)
+        history.appendChild(row)
    }
-    weatherRequest(cityInputs.value);
+     weatherRequest(cityInputs.value);
 });
 
 //Function to Display Search History
-function renderCities(){
+function renderSearchHistory(){
    for (var i = 0; i< searchHistory.length; i++) {
-    //    var searchEl=document.createElement("button")
-      //  searchEl.setAttribute('button', JSON.parse(localStorage.getItem('searchHistory')));  
-        //searchEl.innerHTML=localStorage.getItem("history");
-      //   history.appendChild(searchEl);
-   var searchedCities=JSON.parse(localStorage.getItem("searchHistory"));
-    if (searchedCities !==null){
-        document.getElementById("history").innerHTML=searchedCities;
-   } else{
+        var searchedCities=JSON.parse(localStorage.getItem("searchHistory"));
+        if (searchedCities !==null){
+         document.getElementById("history").innerHTML=searchedCities;
+        } else{
         return;
-    }
+        }
+   }
 }
-}
-renderCities()
+
+renderSearchHistory()
+
+
+       
