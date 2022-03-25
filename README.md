@@ -6,6 +6,7 @@
 
 # Application
 The following displays images of the deployed project and a link to view it in the browser. 
+
 https://britt-klose.github.io/Weather-forecast-6/
 
 ![alt text](images/Search.png)
